@@ -1,2 +1,6 @@
 test.py
+.ipynb_checkpoints
+..gitignore.un~
+.gitignore~
+GoogleNews-vectors-negative300.bin
 
