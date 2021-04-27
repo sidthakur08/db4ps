@@ -15,9 +15,9 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 
         {% if title %}
-            <title>dbms shizz - {{ title }}</title> 
+            <title>{{ title }}</title> 
         {% else %}
-            <title> dbms shizz</title>
+            <title>GameStop :D™ </title>
         {% endif %}
     </head>
     <body>
@@ -42,7 +42,8 @@
                     {% else %}
                         <a class="nav-item nav-link text-white h6 mt-2" href="/login">Login</a>
                         <a class="nav-item nav-link text-white h6 mt-2" href="/register">Register</a>
-                    {% endif %}
+                        <a class="nav-item nav-link text-white h6 mt-2" href="/similar">Find Similar</a>
+                        {% endif %}
                 </div>
             </div>
             </div>

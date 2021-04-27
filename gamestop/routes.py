@@ -1,14 +1,15 @@
-from flask import render_template, url_for, flash, redirect
+from flask import render_template, url_for, flash, redirect, request
 from gamestop import app, db, bcrypt
 from gamestop.forms import RegistrationForm, LoginForm
 from gamestop.models import User, Game
 from flask_login import login_user, current_user, logout_user, login_required
+import subprocess
 
 
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('home.html', title='home')
+    return render_template('home.html', title='Home')
 
 
 @app.route("/about")
@@ -56,3 +57,8 @@ def logout():
 @login_required
 def account():
     return render_template('account.html', title='Account')
+
+
+@app.route("/similar",methods=['POST','GET'])
+def sim():
+    return render_template('similar.html', title='Similar Games')
