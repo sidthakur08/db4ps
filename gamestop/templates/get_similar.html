@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %} 
+    <div class = "jumbo">
+    <h2> Find Similar Games </h2>
+    <p> <form method="POST">
+        Enter the game:
+            <input type="text" id="game_name" name="game">
+            <br> <br> 
+            <a href='/get_sim'><button>Get Games!</button></a>
+        </form>
+    </p>
+{% endblock content %}

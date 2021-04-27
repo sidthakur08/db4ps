@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %} 
+    <div class = "jumbo">
+    <h2> Find Similar Games </h2>
+    <p> <form method="POST">
+        Enter the game:
+            <input type="text" id="game_name" name="game">
+            <br> <br> 
+            <a href='/get_sim'><button>Get Games!</button></a>
+        </form>
+    </p>
+    <p>Showing similar games to {{ game_name }}
+        <p>{%if sim_games%}
+                {%for i in range(0,5)%}
+                    <li>{{ sim_games[i][0] }} with a similarity of {{ sim_games[i][1]*100 }}%</li>
+                {%endfor%}
+            {%else%}
+                Game not found.
+            {%endif%}
+        </p>
+    </p>
+{% endblock content %}
