@@ -1,3 +1,4 @@
+from datetime import datetime
 from gamestop import db, login_manager
 from flask_login import UserMixin
 
@@ -12,18 +13,19 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), nullable=False,
                            default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
-    #games = db.relationship('Game', lazy=True)
+    posts = db.relationship('Post', backref='author', lazy=True)
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
 
-class Game(db.Model):
+class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    platform = db.Column(db.String(50), nullable=False)
-    release = db.Column(db.DateTime, nullable=False)
-    type = db.Column(db.String(50), nullable=False)
-    developers = db.Column(db.String(200), nullable=False)
-    publishers = db.Column(db.String(200), nullable=False)
-    genre = db.Column(db.String(20), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
+    date_posted = db.Column(db.DateTime, nullable=False,
+                            default=datetime.utcnow)
+    content = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    def __repr__(self):
+        return f"Post('{self.title}', '{self.date_posted}')"
